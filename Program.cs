@@ -78,6 +78,10 @@ namespace oop2
                 //what ever you need to find the difference in here,
                 //if file is not empty then that means there are differences and they are stored in that list
                 //so what ever your thinking you need to add, add it here.
+                var file1Lines = File.ReadLines(@"GitRepositories_1a.txt");
+                var file2Lines = File.ReadLines(@"GitRepositories_1b.txt");
+                IEnumerable<String> inFirstNotInSecond = file1Lines.Except(file2Lines);
+                IEnumerable<String> inSecondNotInFirst = file2Lines.Except(file1Lines);
             }
         }
     }
