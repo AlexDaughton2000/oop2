@@ -86,13 +86,45 @@ namespace oop2
 
             if(NotEmpty(file1))
             {
-                //what ever you need to find the difference in here,
-                //if file is not empty then that means there are differences and they are stored in that list
-                //so what ever your thinking you need to add, add it here.
-                var file1Lines = File.ReadLines(@"GitRepositories_1a.txt");
-                var file2Lines = File.ReadLines(@"GitRepositories_1b.txt");
-                IEnumerable<String> inFirstNotInSecond = file1Lines.Except(file2Lines);
-                IEnumerable<String> inSecondNotInFirst = file2Lines.Except(file1Lines);
+                //program finds the difference
+                //what you've got to do now it find out which line the difference appears on
+                // you are banned from reading a file into the program, so if you want access to the original file you'll need to bring it in as an argument in the brackets
+
+                string[] file1List = file1.ToString().Split(),
+                     file2List = file2.ToString().Split();
+
+                for (int i = 0; i < file1List.Length; i++)
+                {
+                    if(file1List.Length == file2List.Length)
+                    {
+                        Console.Write("+ ");
+                        if (file1List[i] == file2List[i])
+                        {
+                            Console.Write(file1List);
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.Write(file1List);
+                            Console.ForegroundColor = ConsoleColor.White;
+                        }
+                    }
+                    else
+                    {
+                        Console.Write("- ");
+                        if(file1List[i] != file2List[i])
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.Write(file1List);
+                            Console.ForegroundColor = ConsoleColor.White;
+                        }
+                        else
+                        {
+                            Console.Write(file1List);
+                        }
+                    }
+                    
+                }
             }
         }
     }
