@@ -20,34 +20,9 @@ namespace oop2
             IEnumerable<string> Check_Difference2 = text_file_2a.Except(text_file_2b);
             IEnumerable<string> Check_Difference3 = text_file_3a.Except(text_file_3b);
 
-            Console.WriteLine("Please Enter a number to select which files to check: -->" + "\n" +
-                   "1 -> GitRepositories_1_a&b " + "\n" +
-                   "2 -> GitRepositories_2_a&b" + "\n" +
-                   "3 -> GitRepositories_3_a&b ");
-
-            string user_Choice = Console.ReadLine();
-
-            if (user_Choice == "1")
-            {
-                Console.WriteLine("Checking difference between GitRepositories_1a.txt and GitRepositories_1b.txt.");
-                Checking_displaying(Check_Difference1);
-            }
-            else if (user_Choice == "2")
-            {
-                Console.WriteLine("Checking difference between GitRepositories_2a.txt and GitRepositories_2b.txt.");
-                Checking_displaying(Check_Difference2);
-            }
-            else if (user_Choice == "3")
-            {
-                Console.WriteLine("Checking difference between GitRepositories_3a.txt and GitRepositories_3b.txt.");
-                Checking_displaying(Check_Difference3);
-            }
-            else
-            {
-                Console.WriteLine("Sorry" + "Please select a valid number to proceeed.");
-            }
-
-            Console.ReadLine();
+            String[] Userinput = Console.ReadLine().Split();
+            String File1 = File.ReadAllLines(@"Userinput [1]").Split();
+            String File2 = File.ReadAllLines(@"Userinput [2]").Split();
         }
         public static bool EmptyOrNot(object Check_Diff)
         {
@@ -73,6 +48,17 @@ namespace oop2
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Text file a and b are different.", Console.ForegroundColor);
+            }
+        }
+
+        public static advanced_Checking(string[] text_file_1a, string[] text_file_1b)
+        {
+            if(EmptyOrNot(file) == false)
+            {
+                var text_file_1a = File.ReadLines(@"GitRepositories_1a.txt");
+                var text_file_1b = File.ReadLines(@"GitRepositories_1b.txt");
+                IEnumerable<string> inFirstNotInSecond = text_file_1a.Except(text_file_1b);
+                IEnumerable<string> inSecondNotInFirst = text_file_1b.Except(text_file_1a);
             }
         }
     }
