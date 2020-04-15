@@ -59,7 +59,7 @@ namespace oop2
         public static void Checking_displaying(IEnumerable<String> file)
         {
             // An if statement to display the message according to the results.
-            if (EmptyOrNot(file) == false)
+            if (EmptyOrNot(file))
             {
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Text file a and b are not different.", Console.ForegroundColor);
@@ -71,12 +71,12 @@ namespace oop2
             }
         }
 
-        public static void advanced_Checking(IEnumerable<String> file1, IEnumerable<string> file2)
+        public static void advanced_Checking(IEnumerable<String> file)
         {
-            if(EmptyOrNot(file1))
+            if(EmptyOrNot(file))
             {
                 //what ever you need to find the difference in here,
-                //file1 and file2 are already in their enumerable list form
+                //if file is not empty then that means there are differences and they are stored in that list
                 //so what ever your thinking you need to add, add it here.
             }
         }
