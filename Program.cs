@@ -101,11 +101,11 @@ namespace oop2
                     //so the first if statement will see if two words are the same
                     if(file1List[i] == file2List[i])
                     {
-                        
+                        Console.WriteLine(file1List[i]);
                     }
                     else
                     {
-
+                        Console.WriteLine(@"The unique word was ", file2List[i], Console.ForegroundColor = ConsoleColor.Green);
                     }
                 }
             }
