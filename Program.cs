@@ -37,6 +37,7 @@ namespace oop2
                     }
                     Check_Difference = File1.Except(File2);
                     Check_Difference2 = File2.Except(File1);
+
                 }
                 catch(Exception e)
                 {
@@ -91,21 +92,22 @@ namespace oop2
                 {
                     file1List = s.Split();
                 }
-                foreach(string s in file1)
+                foreach(string s in file2)
                 {
                     file2List = s.Split();
                 }
-                
+                Console.Write(">: [Output] ");
                 for (int i = 0; i < file1List.Length; i++)
                 {
                     //so the first if statement will see if two words are the same
                     if(file1List[i] == file2List[i])
                     {
-                        Console.WriteLine(file1List[i]);
+                        Console.Write($"{file1List[i]} ");
                     }
                     else
                     {
-                        Console.WriteLine(@"The unique word was ", file2List[i], Console.ForegroundColor = ConsoleColor.Green);
+                        Console.Write($"{file2List[i]} ", Console.ForegroundColor = ConsoleColor.Green);
+                        Console.ForegroundColor = ConsoleColor.White;
                     }
                 }
             }
