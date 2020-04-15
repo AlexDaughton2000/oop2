@@ -95,40 +95,18 @@ namespace oop2
                 {
                     file2List = s.Split();
                 }
-                if (file1List.Length == file2List.Length)
-                {
-                    Console.Write("+ ");
-                }
-                else Console.Write("- ");
+                
                 for (int i = 0; i < file1List.Length; i++)
                 {
-                    if(file1List.Length == file2List.Length)
+                    //so the first if statement will see if two words are the same
+                    if(file1List[i] == file2List[i])
                     {
-                        if (file1List[i] == file2List[i])
-                        {
-                            Console.Write($"{file1List[i]} ");
-                        }
-                        else
-                        {
-                            Console.ForegroundColor = ConsoleColor.Green;
-                            Console.Write($"{file1List[i]} hi ");
-                            //Console.ForegroundColor = ConsoleColor.White;
-                        }
+                        
                     }
                     else
                     {
-                        if(file1List[i] != file2List[i])
-                        {
-                            Console.ForegroundColor = ConsoleColor.Red;
-                            Console.Write($"{file1List[i]} ");
-                            Console.ForegroundColor = ConsoleColor.White;
-                        }
-                        else
-                        {
-                            Console.Write($"{file1List[i]} ");
-                        }
+
                     }
-                    
                 }
             }
         }
