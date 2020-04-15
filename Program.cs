@@ -15,7 +15,8 @@ namespace oop2
             //error checking was added and the problems with advanced_Checking was done
 
             bool Loop = true;
-            IEnumerable<string> Check_Difference = null;
+            IEnumerable<string> Check_Difference = null,
+                Check_Difference2 = null;
             do // this will run the below code once but if Loop is changed then the while loop will loop until the user enters diff
             {
                 try
@@ -35,6 +36,7 @@ namespace oop2
 
                     }
                     Check_Difference = File1.Except(File2);
+                    Check_Difference2 = File2.Except(File1);
                 }
                 catch(Exception e)
                 {
@@ -44,7 +46,7 @@ namespace oop2
             while (Loop);
             Checking_displaying(Check_Difference);            
         }
-        public static bool EmptyOrNot(object Check_Diff)
+        public static bool NotEmpty(object Check_Diff)
         {
             if (Check_Diff != null)
             {
@@ -59,21 +61,30 @@ namespace oop2
         public static void Checking_displaying(IEnumerable<String> file)
         {
             // An if statement to display the message according to the results.
-            if (EmptyOrNot(file))
+            if (!NotEmpty(file))
             {
+                
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Text file a and b are not different.", Console.ForegroundColor);
             }
             else
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Text file a and b are different.", Console.ForegroundColor);
+                foreach(string i in file)
+                {
+                    Console.WriteLine(i);
+                }
             }
         }
 
-        public static void advanced_Checking(IEnumerable<String> file)
+        public static void advanced_Checking(IEnumerable<String> file1, IEnumerable<string> file2)
         {
-            if(EmptyOrNot(file))
+            //using an example of comparing 2a and 2b
+            // file1 = You can only push to two types of URL addresses:
+            //file2 = You can only push to two types of url addresses:
+            //so you've got to write a bit of code that highlights URL in green
+
+            if(NotEmpty(file1))
             {
                 //what ever you need to find the difference in here,
                 //if file is not empty then that means there are differences and they are stored in that list
