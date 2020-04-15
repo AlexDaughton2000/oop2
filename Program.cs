@@ -44,7 +44,7 @@ namespace oop2
                 }
             }
             while (Loop);
-            Checking_displaying(Check_Difference);            
+            Checking_displaying(Check_Difference,Check_Difference2);            
         }
         public static bool NotEmpty(object Check_Diff)
         {
@@ -58,7 +58,7 @@ namespace oop2
             return false;
         }
 
-        public static void Checking_displaying(IEnumerable<String> file)
+        public static void Checking_displaying(IEnumerable<String> file, IEnumerable<string> file2)
         {
             // An if statement to display the message according to the results.
             if (!NotEmpty(file))
@@ -69,15 +69,11 @@ namespace oop2
             }
             else
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                foreach(string i in file)
-                {
-                    Console.WriteLine(i);
-                }
+                advanced_Checking(file, file2);
             }
         }
 
-        public static void advanced_Checking(IEnumerable<String> file1, IEnumerable<string> file2)
+        public static void advanced_Checking(IEnumerable<string> file1, IEnumerable<string> file2)
         {
             //using an example of comparing 2a and 2b
             // file1 = You can only push to two types of URL addresses:
@@ -89,38 +85,47 @@ namespace oop2
                 //program finds the difference
                 //what you've got to do now it find out which line the difference appears on
                 // you are banned from reading a file into the program, so if you want access to the original file you'll need to bring it in as an argument in the brackets
-
-                string[] file1List = file1.ToString().Split(),
-                     file2List = file2.ToString().Split();
-
+                string[] file1List = new string[0],
+                    file2List = new string[0];
+                foreach(string s in file1)
+                {
+                    file1List = s.Split();
+                }
+                foreach(string s in file1)
+                {
+                    file2List = s.Split();
+                }
+                if (file1List.Length == file2List.Length)
+                {
+                    Console.Write("+ ");
+                }
+                else Console.Write("- ");
                 for (int i = 0; i < file1List.Length; i++)
                 {
                     if(file1List.Length == file2List.Length)
                     {
-                        Console.Write("+ ");
                         if (file1List[i] == file2List[i])
                         {
-                            Console.Write(file1List);
+                            Console.Write($"{file1List[i]} ");
                         }
                         else
                         {
                             Console.ForegroundColor = ConsoleColor.Green;
-                            Console.Write(file1List);
-                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.Write($"{file1List[i]} hi ");
+                            //Console.ForegroundColor = ConsoleColor.White;
                         }
                     }
                     else
                     {
-                        Console.Write("- ");
                         if(file1List[i] != file2List[i])
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.Write(file1List);
+                            Console.Write($"{file1List[i]} ");
                             Console.ForegroundColor = ConsoleColor.White;
                         }
                         else
                         {
-                            Console.Write(file1List);
+                            Console.Write($"{file1List[i]} ");
                         }
                     }
                     
