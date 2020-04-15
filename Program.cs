@@ -9,20 +9,40 @@ namespace oop2
     {
         static void Main(string[] args)
         {
-            string[] text_file_1a = File.ReadAllLines(@"GitRepositories_1a.txt");
-            string[] text_file_1b = File.ReadAllLines(@"GitRepositories_1b.txt");
-            string[] text_file_2a = File.ReadAllLines(@"GitRepositories_2a.txt");
-            string[] text_file_2b = File.ReadAllLines(@"GitRepositories_2b.txt");
-            string[] text_file_3a = File.ReadAllLines(@"GitRepositories_3a.txt");
-            string[] text_file_3b = File.ReadAllLines(@"GitRepositories_3b.txt");
+            //changes i've made:
+            //removed some code from the old wrong version
+            //made the program match the look specified in the brief, although output does not match but thats not hard to do
+            //error checking was added and the problems with advanced_Checking was done
 
-            IEnumerable<string> Check_Difference1 = text_file_1a.Except(text_file_1b);
-            IEnumerable<string> Check_Difference2 = text_file_2a.Except(text_file_2b);
-            IEnumerable<string> Check_Difference3 = text_file_3a.Except(text_file_3b);
+            bool Loop = true;
+            IEnumerable<string> Check_Difference = null;
+            do // this will run the below code once but if Loop is changed then the while loop will loop until the user enters diff
+            {
+                try
+                {
+                    Console.Write(">: [Input] ");
+                    string[] Userinput = Console.ReadLine().Split(),
+                    File1 = File.ReadAllLines(Userinput[1]),
+                    File2 = File.ReadAllLines(Userinput[2]);
 
-            String[] Userinput = Console.ReadLine().Split();
-            String File1 = File.ReadAllLines(@"Userinput [1]").Split();
-            String File2 = File.ReadAllLines(@"Userinput [2]").Split();
+                    if (Userinput[0].ToLower() == "diff")
+                    {
+                        Loop = false;
+                    }
+                    else
+                    {
+                        Console.Write("Diff has not been enter \n");
+
+                    }
+                    Check_Difference = File1.Except(File2);
+                }
+                catch(Exception e)
+                {
+                    Console.Write($"{e.Message}\n");
+                }
+            }
+            while (Loop);
+            Checking_displaying(Check_Difference);            
         }
         public static bool EmptyOrNot(object Check_Diff)
         {
@@ -51,14 +71,13 @@ namespace oop2
             }
         }
 
-        public static advanced_Checking(string[] text_file_1a, string[] text_file_1b)
+        public static void advanced_Checking(IEnumerable<String> file1, IEnumerable<string> file2)
         {
-            if(EmptyOrNot(file) == false)
+            if(EmptyOrNot(file1))
             {
-                var text_file_1a = File.ReadLines(@"GitRepositories_1a.txt");
-                var text_file_1b = File.ReadLines(@"GitRepositories_1b.txt");
-                IEnumerable<string> inFirstNotInSecond = text_file_1a.Except(text_file_1b);
-                IEnumerable<string> inSecondNotInFirst = text_file_1b.Except(text_file_1a);
+                //what ever you need to find the difference in here,
+                //file1 and file2 are already in their enumerable list form
+                //so what ever your thinking you need to add, add it here.
             }
         }
     }
