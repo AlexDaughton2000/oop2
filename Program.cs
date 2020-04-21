@@ -80,7 +80,7 @@ namespace oop2
             // file1 = You can only push to two types of URL addresses:
             //file2 = You can only push to two types of url addresses:
             //so you've got to write a bit of code that highlights URL in green
-
+            string sentence = "";
             if(NotEmpty(file1))
             {
                 //program finds the difference
@@ -103,14 +103,21 @@ namespace oop2
                     if(file1List[i] == file2List[i])
                     {
                         Console.Write($"{file1List[i]} ");
+                        sentence += file1List[i];
                     }
                     else
                     {
                         Console.Write($"{file2List[i]} ", Console.ForegroundColor = ConsoleColor.Green);
+                        sentence += file2List[i];
                         Console.ForegroundColor = ConsoleColor.White;
                     }
                 }
             }
+            Log(sentence);
+        }
+        public static void Log(string change)
+        {
+            File.WriteAllText(@"Log.txt", change);
         }
     }
 }
