@@ -9,19 +9,16 @@ namespace oop2
     {
         static void Main(string[] args)
         {
-            //changes i've made:
-            //removed some code from the old wrong version
-            //made the program match the look specified in the brief, although output does not match but thats not hard to do
-            //error checking was added and the problems with advanced_Checking was done
+            //I started by making a simple loops that runs the code below it once. This loop can be changed so that the loop loops forever until the user enters diff
 
             bool Loop = true;
             IEnumerable<string> Check_Difference = null,
                 Check_Difference2 = null;
-            do // this will run the below code once but if Loop is changed then the while loop will loop until the user enters diff
+            do
             {
                 try
                 {
-                    Console.Write(">: [Input] ");
+                    Console.Write(">: [Input] "); //Here I check for the user input, expecting 'diff file1.txt file2.txt' to work 
                     string[] Userinput = Console.ReadLine().Split(),
                     File1 = File.ReadAllLines(Userinput[1]),
                     File2 = File.ReadAllLines(Userinput[2]);
@@ -32,14 +29,14 @@ namespace oop2
                     }
                     else
                     {
-                        Console.Write("Diff has not been enter \n");
+                        Console.Write("Diff has not been entered \n");//if diff is not entered I will have an error shown so that I have some exception handling 
 
                     }
-                    Check_Difference = File1.Except(File2);
+                    Check_Difference = File1.Except(File2); //I then run the check_difference method
                     Check_Difference2 = File2.Except(File1);
 
                 }
-                catch(Exception e)
+                catch(Exception e)//more exception handling to keep the code running smoothly
                 {
                     Console.Write($"{e.Message}\n");
                 }
@@ -47,7 +44,7 @@ namespace oop2
             while (Loop);
             Checking_displaying(Check_Difference,Check_Difference2);            
         }
-        public static bool NotEmpty(object Check_Diff)
+        public static bool NotEmpty(object Check_Diff) //Here I made a method to handle what happens if the files have no differences
         {
             if (Check_Diff != null)
             {
@@ -59,7 +56,7 @@ namespace oop2
             return false;
         }
 
-        public static void Checking_displaying(IEnumerable<String> file, IEnumerable<string> file2)
+        public static void Checking_displaying(IEnumerable<String> file, IEnumerable<string> file2) //Next I made the method that would report on whether or not the files were different
         {
             // An if statement to display the message according to the results.
             if (!NotEmpty(file))
@@ -74,21 +71,13 @@ namespace oop2
             }
         }
 
-        public static void advanced_Checking(IEnumerable<string> file1, IEnumerable<string> file2)
+        public static void advanced_Checking(IEnumerable<string> file1, IEnumerable<string> file2) //This method contains advanced checks as well as the code that highlights the change in green
         {
-            //using an example of comparing 2a and 2b
-            // file1 = You can only push to two types of URL addresses:
-            //file2 = You can only push to two types of url addresses:
-            //so you've got to write a bit of code that highlights URL in green
-
             if(NotEmpty(file1))
             {
-                //program finds the difference
-                //what you've got to do now it find out which line the difference appears on
-                // you are banned from reading a file into the program, so if you want access to the original file you'll need to bring it in as an argument in the brackets
                 string[] file1List = new string[0],
                     file2List = new string[0];
-                foreach(string s in file1)
+                foreach(string s in file1) //I split the files down into individual lines then output them
                 {
                     file1List = s.Split();
                 }
