@@ -73,6 +73,11 @@ namespace oop2
 
         public static void advanced_Checking(IEnumerable<string> file1, IEnumerable<string> file2) //This method contains advanced checks as well as the code that highlights the change in green
         {
+            //using an example of comparing 2a and 2b
+            // file1 = You can only push to two types of URL addresses:
+            //file2 = You can only push to two types of url addresses:
+            //so you've got to write a bit of code that highlights URL in green
+            string sentence = "";
             if(NotEmpty(file1))
             {
                 string[] file1List = new string[0],
@@ -92,14 +97,21 @@ namespace oop2
                     if(file1List[i] == file2List[i])
                     {
                         Console.Write($"{file1List[i]} ");
+                        sentence += file1List[i];
                     }
                     else
                     {
                         Console.Write($"{file2List[i]} ", Console.ForegroundColor = ConsoleColor.Green);
+                        sentence += file2List[i];
                         Console.ForegroundColor = ConsoleColor.White;
                     }
                 }
             }
+            Log(sentence);
+        }
+        public static void Log(string change)
+        {
+            File.WriteAllText(@"Log.txt", change);
         }
     }
 }
