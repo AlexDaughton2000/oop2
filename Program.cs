@@ -73,10 +73,7 @@ namespace oop2
 
         public static void advanced_Checking(IEnumerable<string> file1, IEnumerable<string> file2) //This method contains advanced checks as well as the code that highlights the change in green
         {
-            //using an example of comparing 2a and 2b
-            // file1 = You can only push to two types of URL addresses:
-            //file2 = You can only push to two types of url addresses:
-            //so you've got to write a bit of code that highlights URL in green
+
             string sentence = "";
             if(NotEmpty(file1))
             {
